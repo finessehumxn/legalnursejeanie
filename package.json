@@ -1,0 +1,12 @@
+{
+  "name": "jeanie-vatelia-lnc",
+  "version": "1.0.0",
+  "description": "Jeanie Vatelia Legal Nurse Consulting — professional website",
+  "scripts": {
+    "start": "npx serve . -p ${PORT:-3000}",
+    "dev": "npx serve . -p 3000"
+  },
+  "dependencies": {
+    "serve": "^14.2.3"
+  }
+}

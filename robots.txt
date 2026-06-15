@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /for-nurses.html
+Disallow: /privacy.html
+Disallow: /disclaimer.html
+Sitemap: https://legalnursejeanie.com/sitemap.xml

@@ -69,3 +69,13 @@ submitForm('nurse-form',function(){
     body:'Name: '+name+'\nCredentials: '+cred+'\nLicense/state: '+lic+'\nSpecialty: '+spec+'\nPhone: '+phone+'\nEmail: '+email+'\n\nExperience:\n'+(exp||'Not provided')
   };
 });
+
+/* =====================================================================
+   SCHEDULING (optional): paste a Calendly (or similar) link to turn on
+   "Schedule a call" buttons. Leave empty to hide them.
+   ===================================================================== */
+var CALENDLY_URL = "https://calendly.com/nursejeanielegal/15min";
+(function(){
+  if(!CALENDLY_URL) return;
+  document.querySelectorAll('.calendly-link').forEach(function(a){ a.href=CALENDLY_URL; a.style.display=''; });
+})();

@@ -15,7 +15,7 @@
   --gold-soft:#E1C285;
   --cream:#F7F0E3;       /* headings / light */
   --text:#E7E1F1;        /* body text */
-  --muted:#A89FC0;       /* secondary text */
+  --muted:#B4ABCC;       /* secondary text */
   --line:rgba(255,255,255,.10);
   --line-2:rgba(255,255,255,.16);
   --shadow:0 2px 6px rgba(0,0,0,.25),0 14px 40px rgba(0,0,0,.30);
@@ -292,3 +292,11 @@ p{color:var(--muted)}
 .perspective .eyebrow{color:var(--gold-soft)}
 .perspective h2{color:#fff;margin:8px 0 14px}
 .perspective p{color:var(--lavender);font-size:17px;max-width:64ch}
+
+/* sticky mobile CTA bar */
+.mobile-cta{display:none}
+@media(max-width:880px){
+  body{padding-bottom:68px}
+  .mobile-cta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:75;gap:10px;padding:10px 14px;background:rgba(22,15,42,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line-2)}
+  .mobile-cta .btn{flex:1;justify-content:center;padding:12px 8px;font-size:14px}
+}

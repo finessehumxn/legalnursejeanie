@@ -1,75 +1,71 @@
 /* Legal Nurse Jeanie — shared scripts */
 
-// Mobile nav toggle
+/* =====================================================================
+   FORM DELIVERY — set this so submissions email Jeanie automatically.
+   1. Create a free form at https://formspree.io (use contact@legalnursejeanie.com)
+   2. Copy your form ID and replace YOUR_FORM_ID below.
+   Until then, the form falls back to opening the visitor's email app.
+   ===================================================================== */
+var FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+
+/* mobile nav */
 (function(){
-  var nav = document.querySelector('.nav');
-  var btn = document.querySelector('.nav-toggle');
-  if(btn && nav){
-    btn.addEventListener('click', function(){
-      nav.classList.toggle('open');
-      btn.setAttribute('aria-expanded', nav.classList.contains('open'));
-    });
+  var nav=document.querySelector('.nav'), btn=document.querySelector('.nav-toggle');
+  if(btn&&nav){btn.addEventListener('click',function(){nav.classList.toggle('open');btn.setAttribute('aria-expanded',nav.classList.contains('open'));});}
+})();
+
+/* scroll reveal */
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)||!els.length){els.forEach(function(e){e.classList.add('in');});return;}
+  var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
+  els.forEach(function(e){io.observe(e);});
+  setTimeout(function(){els.forEach(function(e){e.classList.add('in');});},2000);
+})();
+
+function v(id){var el=document.getElementById(id);return el?el.value.trim():'';}
+
+function submitForm(formId, getPayload){
+  var form=document.getElementById(formId); if(!form) return;
+  var status=document.getElementById(formId+'-status');
+  function setStatus(cls,html){ if(status){status.className='form-status '+cls; status.innerHTML=html;} }
+  function emailFallback(p){
+    var href='mailto:contact@legalnursejeanie.com?subject='+encodeURIComponent(p.subject)+'&body='+encodeURIComponent(p.body);
+    setStatus('warn','Opening your email app as a backup — if nothing happens, email <a href="'+href+'">contact@legalnursejeanie.com</a>.');
+    window.location.href=href;
   }
-})();
-
-// Scroll reveal
-(function(){
-  var els = document.querySelectorAll('.reveal');
-  if(!('IntersectionObserver' in window) || !els.length){
-    els.forEach(function(e){ e.classList.add('in'); });
-    return;
-  }
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(en){
-      if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
-    });
-  }, { threshold:0.12, rootMargin:'0px 0px -8% 0px' });
-  els.forEach(function(e){ io.observe(e); });
-  // Failsafe: if anything is still hidden after 2s, reveal it.
-  setTimeout(function(){ els.forEach(function(e){ e.classList.add('in'); }); }, 2000);
-})();
-
-// Attorney inquiry form -> mailto
-(function(){
-  var form = document.getElementById('attorney-form');
-  if(!form) return;
-  form.addEventListener('submit', function(e){
+  form.addEventListener('submit',function(e){
     e.preventDefault();
-    var v = function(id){ var el=document.getElementById(id); return el ? el.value.trim() : ''; };
-    var first=v('a-first'), last=v('a-last'), email=v('a-email'),
-        phone=v('a-phone'), firm=v('a-firm'), msg=v('a-msg');
-    var name=(first+' '+last).trim();
-    var sub = encodeURIComponent('Attorney inquiry — ' + name + (firm ? ' (' + firm + ')' : ''));
-    var body = encodeURIComponent(
-      'Name: ' + name +
-      '\nEmail: ' + email +
-      '\nPhone: ' + phone +
-      '\nLaw firm: ' + firm +
-      '\n\nHow can I help:\n' + (msg || 'Not provided')
-    );
-    window.location.href = 'mailto:contact@legalnursejeanie.com?subject=' + sub + '&body=' + body;
+    var p=getPayload();
+    if(FORMSPREE_ENDPOINT.indexOf('YOUR_FORM_ID')!==-1){ emailFallback(p); return; }
+    setStatus('sending','Sending…');
+    var fd=new FormData();
+    Object.keys(p.fields).forEach(function(k){fd.append(k,p.fields[k]);});
+    fd.append('_subject',p.subject);
+    fetch(FORMSPREE_ENDPOINT,{method:'POST',body:fd,headers:{'Accept':'application/json'}})
+      .then(function(r){
+        if(r.ok){ setStatus('ok','Thank you — your message has been sent. I\u2019ll be in touch shortly.'); form.reset(); }
+        else { emailFallback(p); }
+      })
+      .catch(function(){ emailFallback(p); });
   });
-})();
+}
 
-// Nurse application form -> mailto
-(function(){
-  var form = document.getElementById('nurse-form');
-  if(!form) return;
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    var v = function(id){ var el=document.getElementById(id); return el ? el.value.trim() : ''; };
-    var name=v('n-name'), cred=v('n-cred'), lic=v('n-lic'), phone=v('n-phone'),
-        email=v('n-email'), spec=v('n-spec'), exp=v('n-exp');
-    var sub = encodeURIComponent('Nurse Application — ' + name + (cred ? ', ' + cred : ''));
-    var body = encodeURIComponent(
-      'Name: ' + name +
-      '\nCredentials: ' + cred +
-      '\nLicense / state: ' + lic +
-      '\nPhone: ' + phone +
-      '\nEmail: ' + email +
-      '\nSpecialty: ' + spec +
-      '\n\nExperience & why interested:\n' + (exp || 'Not provided')
-    );
-    window.location.href = 'mailto:contact@legalnursejeanie.com?subject=' + sub + '&body=' + body;
-  });
-})();
+submitForm('attorney-form',function(){
+  var first=v('a-first'),last=v('a-last'),email=v('a-email'),phone=v('a-phone'),firm=v('a-firm'),msg=v('a-msg');
+  var name=(first+' '+last).trim();
+  return {
+    fields:{Name:name,email:email,Phone:phone,'Law firm':firm,Message:(msg||'Not provided')},
+    subject:'Attorney inquiry — '+name+(firm?' ('+firm+')':''),
+    body:'Name: '+name+'\nEmail: '+email+'\nPhone: '+phone+'\nLaw firm: '+firm+'\n\nHow can I help:\n'+(msg||'Not provided')
+  };
+});
+
+submitForm('nurse-form',function(){
+  var name=v('n-name'),cred=v('n-cred'),lic=v('n-lic'),spec=v('n-spec'),phone=v('n-phone'),email=v('n-email'),exp=v('n-exp');
+  return {
+    fields:{Application:'Nurse',Name:name,Credentials:cred,'License/state':lic,Specialty:spec,Phone:phone,email:email,Experience:(exp||'Not provided')},
+    subject:'Nurse application — '+name+(cred?', '+cred:''),
+    body:'Name: '+name+'\nCredentials: '+cred+'\nLicense/state: '+lic+'\nSpecialty: '+spec+'\nPhone: '+phone+'\nEmail: '+email+'\n\nExperience:\n'+(exp||'Not provided')
+  };
+});

@@ -8,7 +8,9 @@ Dark theme · royal purple + antique gold.
 ## Pages
 - `index.html` — Home (hero, 3 engagements, who I help, process, testimonials, CTA)
 - `services.html` — Services, example scenarios, deliverables
-- `insights.html` — Blog index + `insight-benefits.html`, `insight-case-types.html`, `insight-time-savings.html`
+- `insights.html` — Blog index (12 articles incl. specialty + cultural-competence)
+  - specialty posts: PACU/perioperative, telemetry, sedation, telehealth, women's health, cultural competence + `insight-benefits.html`, `insight-case-types.html`, `insight-time-savings.html`
+- `recommendations.html` — Real clinical recommendations
 - `faq.html` — Common attorney questions
 - `about.html` — Story, headshot, credentials
 - `contact.html` — Attorney form + legal disclaimer

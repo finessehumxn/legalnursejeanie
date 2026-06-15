@@ -1,32 +1,25 @@
 # Legal Nurse Jeanie
 
 Multi-page website for **Jeanie Vatelia, BSN, RN** — California & New Zealand licensed Legal Nurse Consultant.
+Dark theme · royal purple + antique gold.
 
-🌐 **Live:** [legalnursejeanie.com](https://legalnursejeanie.com)
-🚀 Deployed on Railway — auto-deploys on every push to `main`.
+🌐 **Live:** [legalnursejeanie.com](https://legalnursejeanie.com) — Railway auto-deploys on push to `main`.
 
 ## Pages
-- `index.html` — Home (hero art, three engagement levels, who I help, process, CTA)
-- `services.html` — Services, case types, deliverables
-- `about.html` — Story, headshot, credentials & licensure
-- `contact.html` — Attorney contact form + legal disclaimer
-- `for-nurses.html` — Nurse team application (noindex)
+- `index.html` — Home (hero, 3 engagements, who I help, process, testimonials, CTA)
+- `services.html` — Services, example scenarios, deliverables
+- `insights.html` — Blog index + `insight-benefits.html`, `insight-case-types.html`, `insight-time-savings.html`
+- `faq.html` — Common attorney questions
+- `about.html` — Story, headshot, credentials
+- `contact.html` — Attorney form + legal disclaimer
+- `for-nurses.html` — Nurse application (noindex)
 - `privacy.html` / `disclaimer.html` — Legal templates (have an attorney review)
 
-## Structure
-```
-legalnursejeanie/
-├── index.html  services.html  about.html  contact.html
-├── for-nurses.html  privacy.html  disclaimer.html
-├── css/styles.css      # brand design system
-├── js/main.js          # nav, scroll reveal, mailto forms
-├── assets/             # logo, hero art, headshot
-├── package.json  railway.json
-└── README.md
-```
+## Files (all at repo root)
+HTML pages · `styles.css` · `main.js` · images (`logo-*.png`, `*-hero-*.jpg`, `jeanie-headshot.jpg`) · `package.json` · `railway.json`
 
 ## Brand
-Royal Purple #5B4B8A · Deep Plum #3E2F66 · Antique Gold #B98E4A · Cream #F7F0E3 · Ink #2A2438
+Deep BG #1C1535 · Royal Purple #5B4B8A · Antique Gold #B98E4A · Cream #F7F0E3
 Cormorant Garamond + Montserrat + Inter. No fees published — rates shared during the free consult.
 
 ## Contact

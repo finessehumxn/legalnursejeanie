@@ -1,8 +1,8 @@
-# Nurse Jeanie Legal
+# Legal Nurse Jeanie 
 
 > Legal Nurse Consulting website for **Jeanie Vatelia, BSN, RN** — California & New Zealand licensed Legal Nurse Consultant serving plaintiff and defense attorneys remotely.
 
-🌐 **Live:** [nursejeanielegal.com](https://www.legalnursejeanie.com)  
+🌐 **Live:** [legalnursejeanie.com](https://www.legalnursejeanie.com)  
 🚀 **Deployed on Railway** — auto-deploys on every push to `main`
 
 ---

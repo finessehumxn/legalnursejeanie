@@ -3,19 +3,19 @@
    Royal Purple · Antique Gold · on deep aubergine
    ============================================================ */
 :root{
-  --bg:#1C1535;          /* page background — deep purple-black */
-  --bg-2:#221940;        /* alternating section */
-  --surface:#2C2350;     /* cards */
-  --surface-2:#352A5E;   /* hover / lifted */
-  --plum:#3E2F66;
-  --purple:#6B59A0;      /* accent purple (brightened for dark) */
-  --purple-soft:#8A77C0;
-  --lavender:#C9BEDC;
-  --gold:#C9A24E;        /* antique gold, slightly brightened for dark */
-  --gold-soft:#E1C285;
-  --cream:#F7F0E3;       /* headings / light */
-  --text:#E7E1F1;        /* body text */
-  --muted:#B4ABCC;       /* secondary text */
+  --bg:#0E0D12;          /* page background — deep purple-black */
+  --bg-2:#131218;        /* alternating section */
+  --surface:#16151C;     /* cards */
+  --surface-2:#1D1C24;   /* hover / lifted */
+  --plum:#201F28;
+  --purple:#9BA0AF;      /* accent purple (brightened for dark) */
+  --purple-soft:#B4B8C4;
+  --lavender:#C7CAD3;
+  --gold:#B8933E;        /* antique gold, slightly brightened for dark */
+  --gold-soft:#D3B368;
+  --cream:#EFEAE3;       /* headings / light */
+  --text:#E6E3DC;        /* body text */
+  --muted:#A6AAB6;       /* secondary text */
   --line:rgba(255,255,255,.10);
   --line-2:rgba(255,255,255,.16);
   --shadow:0 2px 6px rgba(0,0,0,.25),0 14px 40px rgba(0,0,0,.30);
@@ -44,8 +44,8 @@ p{color:var(--muted)}
 /* buttons */
 .btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--font-body);font-size:15px;font-weight:600;padding:13px 28px;border-radius:999px;border:1.5px solid transparent;cursor:pointer;transition:transform .15s,box-shadow .15s,background .15s,border-color .15s,color .15s;white-space:nowrap}
 .btn:hover{transform:translateY(-1px)}
-.btn-gold{background:var(--gold);color:#221940;box-shadow:0 8px 22px rgba(201,162,78,.30)}
-.btn-gold:hover{background:var(--gold-soft);color:#1C1535}
+.btn-gold{background:var(--gold);color:#131218;box-shadow:0 8px 22px rgba(201,162,78,.30)}
+.btn-gold:hover{background:var(--gold-soft);color:#0E0D12}
 .btn-purple{background:var(--purple);color:#fff}
 .btn-purple:hover{background:var(--purple-soft)}
 .btn-ghost{background:transparent;border-color:var(--line-2);color:var(--cream)}
@@ -96,7 +96,7 @@ p{color:var(--muted)}
 .role{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:32px 28px;box-shadow:var(--shadow);position:relative;transition:transform .18s,box-shadow .18s,border-color .18s}
 .role:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--line-2)}
 .role.feature{border-color:var(--gold)}
-.role-tag{position:absolute;top:-12px;left:28px;background:var(--gold);color:#221940;font-family:var(--font-caps);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 13px;border-radius:999px}
+.role-tag{position:absolute;top:-12px;left:28px;background:var(--gold);color:#131218;font-family:var(--font-caps);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 13px;border-radius:999px}
 .role h3{font-size:26px;margin-bottom:4px;color:var(--cream)}
 .role .tier{font-family:var(--font-caps);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:14px}
 .role p{font-size:15.5px}
@@ -157,7 +157,7 @@ p{color:var(--muted)}
 .article .meta{font-family:var(--font-caps);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:6px}
 
 /* band */
-.band{background:linear-gradient(135deg,var(--plum),#2A1F4A);color:#fff;border-radius:20px;padding:56px 48px;text-align:center;position:relative;overflow:hidden;border:1px solid var(--line-2)}
+.band{background:linear-gradient(135deg,var(--plum),#17161D);color:#fff;border-radius:20px;padding:56px 48px;text-align:center;position:relative;overflow:hidden;border:1px solid var(--line-2)}
 .band::after{content:"";position:absolute;inset:0;background:radial-gradient(720px 320px at 50% -30%,rgba(201,162,78,.30),transparent 60%);pointer-events:none}
 .band>*{position:relative;z-index:1}
 .band h2{color:#fff;font-size:clamp(28px,4vw,42px);margin-bottom:12px}
@@ -195,7 +195,7 @@ p{color:var(--muted)}
 .field input::placeholder,.field textarea::placeholder{color:#7E7596}
 .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,162,78,.20)}
 .field select{color:var(--cream)}
-.field option{color:#1C1535}
+.field option{color:#0E0D12}
 .field textarea{min-height:130px;resize:vertical}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .form-note{font-size:13.5px;color:var(--muted);margin-top:12px}
@@ -286,7 +286,7 @@ p{color:var(--muted)}
 .why h3{font-size:18px}
 .why p{font-size:14px}
 /* perspective callout */
-.perspective{background:linear-gradient(135deg,var(--plum),#2A1F4A);border:1px solid var(--line-2);border-radius:20px;padding:42px 44px;position:relative;overflow:hidden}
+.perspective{background:linear-gradient(135deg,var(--plum),#17161D);border:1px solid var(--line-2);border-radius:20px;padding:42px 44px;position:relative;overflow:hidden}
 .perspective::after{content:"";position:absolute;inset:0;background:radial-gradient(600px 280px at 90% -20%,rgba(201,162,78,.22),transparent 60%);pointer-events:none}
 .perspective>*{position:relative;z-index:1}
 .perspective .eyebrow{color:var(--gold-soft)}
